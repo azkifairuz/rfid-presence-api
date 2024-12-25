@@ -27,7 +27,6 @@ func main() {
 		log.Fatalf("Error during AutoMigrate: %v", err)
 		fmt.Printf("Error during AutoMigrate: %v", err)
 	}
-	log.Fatalf("migrate succes")
 	fmt.Println("migrate succes")
 
 }

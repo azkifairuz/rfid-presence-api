@@ -25,10 +25,10 @@ type Prodi struct {
 type Dosen struct {
 	gorm.Model
 	ID       int    `gorm:"primaryKey"`
-	NIP      string `gorm:"type:varchar(20);not null;unique"`
+	Nip      string `gorm:"type:varchar(20);not null;unique"`
 	Name     string `gorm:"type:varchar(100);not null"`
-	FakultasID int    `gorm:"not null"`
-	Fakultas  Fakultas `gorm:"foreignKey:FakultasID"`
+	ProdiID   int    `gorm:"not null"`
+	Prodi     Prodi  `gorm:"foreignKey:ProdiID"`
 	Accounts []Account `gorm:"foreignKey:UserID"`
 	Jadwals  []Jadwal  `gorm:"foreignKey:DosenID"`
 }
@@ -38,7 +38,7 @@ type Mahasiswa struct {
 	gorm.Model
 
 	ID        int    `gorm:"primaryKey"`
-	NIM       string `gorm:"type:varchar(20);not null;unique"`
+	Nim       string `gorm:"type:varchar(20);not null;unique"`
 	Name      string `gorm:"type:varchar(100);not null"`
 	ProdiID   int    `gorm:"not null"`
 	Prodi     Prodi  `gorm:"foreignKey:ProdiID"`

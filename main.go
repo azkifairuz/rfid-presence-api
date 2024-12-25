@@ -15,6 +15,7 @@ func main() {
 	r := gin.Default()
 	routes.FakultasRoutes(r)
 	routes.ProdiRoutes(r)
+	routes.DosenRoutes(r)
 
 	r.Run()
 }

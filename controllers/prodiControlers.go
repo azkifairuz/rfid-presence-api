@@ -60,9 +60,14 @@ func GetAllProdi(c *gin.Context)  {
 }
 
 func GetProdi(c *gin.Context)  {
-	var prodi models.Prodi
-	initializers.DB.Joins("Fakultas").First(&prodi)
+	id := c.Param("id")
 
+	var prodi models.Prodi
+	if result := initializers.DB.Table("prodis").Joins("Fakultas").First(&prodi, id); result.Error != nil {
+		helper.ResponseDefault(c, 404, nil, "Prodi not found")
+		return
+	}
 	helper.ResponseDefault(c, 200, prodi, "success get all data prodi")
+
 
 }
