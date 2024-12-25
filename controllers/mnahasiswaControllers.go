@@ -12,7 +12,7 @@ func CreateMahasiswa(c *gin.Context)  {
 	var body struct {
 		NIM string `json:"nim" binding:"required"`
 		Name string `json:"name" binding:"required"`
-		ProdiId int `json:"prodiId" binding:"required"`
+		KelasID int `json:"kelasId" binding:"required"`
 	}
 
 	if err := c.Bind(&body); err != nil {
@@ -26,14 +26,14 @@ func CreateMahasiswa(c *gin.Context)  {
 		return
 	}
 
-	var prodi models.Prodi
-	if err := initializers.DB.Where("id = ?", body.ProdiId).First(&prodi).Error; err != nil {
+	var prodi models.Kelas
+	if err := initializers.DB.Where("id = ?", body.KelasID).First(&prodi).Error; err != nil {
 		// If Fakultas doesn't exist, return error
-		helper.ResponseDefault(c, 400, nil, "Prodi with the provided ID does not exist")
+		helper.ResponseDefault(c, 400, nil, "Kelas with the provided ID does not exist")
 		return
 	}
 	//create a post
-	mahasiswa := models.Mahasiswa{Nim: body.NIM,Name: body.Name,ProdiID: body.ProdiId}
+	mahasiswa := models.Mahasiswa{Nim: body.NIM,Name: body.Name,KelasID: body.KelasID}
 
 	result := initializers.DB.Create(&mahasiswa)
 	if result.Error !=nil {
@@ -57,12 +57,13 @@ func GetAllMahasiswa(c *gin.Context)  {
 	
 	var mahasiswa []models.MhsModel
 	initializers.DB.Table("mahasiswas").
-	Select("mahasiswas.id as mahasiswa_id, mahasiswas.name as mahasiswa_name, prodis.name AS prodi_name, prodis.id AS prodi_id,  fakultas.name AS fakultas_name,fakultas.id AS fakultas_id").
-    Joins("JOIN prodis ON mahasiswas.prodi_id = prodis.id").
+	Select("mahasiswas.id as mahasiswa_id, mahasiswas.name as mahasiswa_name, prodis.name AS prodi_name, prodis.id AS prodi_id,  fakultas.name AS fakultas_name,kelas.id AS kelas_id,kelas.name AS kelas_name,kelas.id AS kelas_id").
+    Joins("JOIN kelas ON mahasiswas.prodi_id = prodis.id").
+    Joins("JOIN prodis ON kelas.prodi_id = prodis.id").
     Joins("JOIN fakultas ON prodis.fakultas_id = fakultas.id").
     Scan(&mahasiswa)
 
-	helper.ResponseDefault(c, 200, mahasiswa, "success get all data prodi")
+	helper.ResponseDefault(c, 200, mahasiswa, "success get all data mahasiswa")
 
 }
 
@@ -72,15 +73,16 @@ func GetMahasiswa(c *gin.Context)  {
 	var mahasiwa models.MhsModel
 	
 	if result := initializers.DB.Table("mahasiswas").
-	Select("mahasiswas.id as mahasiswa_id, mahasiswas.name as mahasiswa_name, prodis.name AS prodi_name, prodis.id AS prodi_id,  fakultas.name AS fakultas_name,fakultas.id AS fakultas_id").
-    Joins("JOIN prodis ON mahasiswas.prodi_id = prodis.id").
+	Select("mahasiswas.id as mahasiswa_id, mahasiswas.name as mahasiswa_name, prodis.name AS prodi_name, prodis.id AS prodi_id,  fakultas.name AS fakultas_name,kelas.id AS kelas_id,kelas.name AS kelas_name,kelas.id AS kelas_id").
+    Joins("JOIN kelas ON mahasiswas.prodi_id = prodis.id").
+    Joins("JOIN prodis ON kelas.prodi_id = prodis.id").
     Joins("JOIN fakultas ON prodis.fakultas_id = fakultas.id").
 	Where("mahasiswas.id = ?", id).
 	Scan(&mahasiwa); result.Error != nil {
 		helper.ResponseDefault(c, 404, nil, "Dosen not found")
 		return
 	}
-	helper.ResponseDefault(c, 200, mahasiwa, "success get all data dosen")
+	helper.ResponseDefault(c, 200, mahasiwa, "success get all data mahasiswa")
 
 }
 

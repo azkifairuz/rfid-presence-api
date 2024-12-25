@@ -40,8 +40,8 @@ type Mahasiswa struct {
 	ID        int    `gorm:"primaryKey"`
 	Nim       string `gorm:"type:varchar(20);not null;unique"`
 	Name      string `gorm:"type:varchar(100);not null"`
-	ProdiID   int    `gorm:"not null"`
-	Prodi     Prodi  `gorm:"foreignKey:ProdiID"`
+	KelasID   int    `gorm:"not null"`
+	Kelas     Kelas  `gorm:"foreignKey:KelasID"`
 	Presensi  []Presensi `gorm:"foreignKey:MahasiswaID"`
 }
 

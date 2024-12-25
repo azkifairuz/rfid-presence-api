@@ -18,9 +18,9 @@ func main() {
 		&models.Fakultas{},
 		&models.Prodi{},
 		&models.Dosen{},
+		&models.Kelas{},
 		&models.Mahasiswa{},
 		&models.Staf{},
-		&models.Kelas{},
 		&models.Jadwal{},
 		&models.Account{},
 	);err != nil {
