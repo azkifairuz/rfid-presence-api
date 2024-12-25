@@ -9,14 +9,14 @@ import (
 type Fakultas struct {
 	gorm.Model
 	ID   int    `gorm:"primaryKey"`
-	Name string `gorm:"type:varchar(100);not null"`
+	Name string `gorm:"type:varchar(100);not null;unique"`
 }
 
 // Prodi model
 type Prodi struct {
 	gorm.Model
 	ID        int    `gorm:"primaryKey"`
-	Name      string `gorm:"type:varchar(100);not null"`
+	Name      string `gorm:"type:varchar(100);not null;unique"`
 	FakultasID int    `gorm:"not null"`
 	Fakultas  Fakultas `gorm:"foreignKey:FakultasID"`
 }

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/azkifairuz/rfid-presence-api/controlers"
 	"github.com/azkifairuz/rfid-presence-api/initializers"
+	"github.com/azkifairuz/rfid-presence-api/routes"
 	"github.com/gin-gonic/gin"
 )
 
@@ -13,9 +13,8 @@ func init() {
 
 func main() {
 	r := gin.Default()
-	r.POST("fakultas/", controlers.CreateFakultas)
-	r.GET("fakultas/", controlers.GetAllFakultas)
-	r.GET("fakultas/:id", controlers.GetFakultas)
+	routes.FakultasRoutes(r)
+	routes.ProdiRoutes(r)
 
-	r.Run() // listen and serve on 0.0.0.0:8080
+	r.Run()
 }
