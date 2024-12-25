@@ -7,8 +7,9 @@ import (
 
 func init() {
 	initializers.LoadEnvVariables()
+	initializers.ConnectToDb()
   }
-  
+
 func main() {
 	r := gin.Default()
 	r.GET("/", func(c *gin.Context) {
