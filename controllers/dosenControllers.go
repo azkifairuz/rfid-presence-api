@@ -57,7 +57,7 @@ func GetAllDosen(c *gin.Context)  {
 	
 	var dosen []models.DosenModel
 	initializers.DB.Table("dosens").
-	Select("dosens.id as dosen_id, dosens.name as dosen_name, prodis.name AS prodi_name, fakultas.name AS fakultas_name").
+	Select("dosens.id as dosen_id, dosens.name as dosen_name, prodis.name AS prodi_name,prodis.id AS prodis_id, fakultas.name AS fakultas_name,fakultas.id as fakultas_id").
     Joins("JOIN prodis ON dosens.prodi_id = prodis.id").
     Joins("JOIN fakultas ON prodis.fakultas_id = fakultas.id").
     Scan(&dosen)
@@ -72,7 +72,7 @@ func GetDosen(c *gin.Context)  {
 	var dosen models.DosenModel
 	
 	if result := initializers.DB.Table("dosens").
-	Select("dosens.id as dosen_id, dosens.name as dosen_name, prodis.name AS prodi_name, fakultas.name AS fakultas_name").
+	Select("dosens.id as dosen_id, dosens.name as dosen_name, prodis.name AS prodi_name,prodis.id AS prodis_id, fakultas.name AS fakultas_name,fakultas.id as fakultas_id").
     Joins("JOIN prodis ON dosens.prodi_id = prodis.id").
     Joins("JOIN fakultas ON prodis.fakultas_id = fakultas.id").
 	Where("dosens.id = ?", id).
