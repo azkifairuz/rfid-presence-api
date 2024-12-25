@@ -62,7 +62,7 @@ type Jadwal struct {
 	ID      int       `gorm:"primaryKey"`
 	Hour    time.Time `gorm:"not null"`
 	Days    string    `gorm:"type:varchar(50);not null"`
-	Date	time.Time
+	Date	time.Time 
 	ProdiID int       `gorm:"not null"`
 	Prodi   Prodi     `gorm:"foreignKey:ProdiID"`
 	DosenID int       `gorm:"not null"`
@@ -75,8 +75,9 @@ type Account struct {
 	gorm.Model
 
 	ID       int        `gorm:"primaryKey"`
-	UserID   int        `gorm:"not null;unique"`
+	UserID   int        `gorm:"not null"`
 	Email    string
+	AccountType AccountType `gorm:"type:varchar(50);not null"`
 }
 
 
@@ -93,6 +94,7 @@ type Staf struct {
 	gorm.Model
 
 	ID        int       `gorm:"primaryKey"`
+	Nip		string		`gorm:"type:varchar(20);not null;unique"`
 	Name      string    `gorm:"type:varchar(100);not null"`
 	FakultasID int      `gorm:"not null"`
 	Fakultas  Fakultas `gorm:"foreignKey:FakultasID"`

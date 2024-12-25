@@ -17,6 +17,7 @@ func main() {
 	routes.ProdiRoutes(r)
 	routes.DosenRoutes(r)
 	routes.MahasiswaRoutes(r)
+	routes.StafRoutes(r)
 
 	r.Run()
 }

@@ -18,3 +18,4 @@ type MhsModel struct {
     FakultasID      uint   `json:"fakultas_id"`
     FakultasName string `json:"fakultas_name"`
 }
+
