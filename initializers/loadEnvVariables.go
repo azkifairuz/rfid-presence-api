@@ -10,6 +10,5 @@ func LoadEnvVariables()  {
 	  log.Fatal("Error loading .env file")
 	  return
 	}
-	log.Fatal("connected to db")
 
 }
