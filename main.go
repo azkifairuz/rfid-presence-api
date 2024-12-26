@@ -20,6 +20,7 @@ func main() {
 	routes.StafRoutes(r)
 	routes.KelasRoutes(r)
 	routes.JadwalRoutes(r)
+	routes.CardRoutes(r)
 
 	r.Run()
 }

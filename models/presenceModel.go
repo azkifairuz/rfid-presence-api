@@ -30,7 +30,6 @@ type Dosen struct {
 	ProdiID   int    `gorm:"not null"`
 	Prodi     Prodi  `gorm:"foreignKey:ProdiID"`
 	Accounts []Account `gorm:"foreignKey:UserID"`
-	Jadwals  []Jadwal  `gorm:"foreignKey:DosenID"`
 }
 
 // Mahasiswa model
@@ -67,7 +66,6 @@ type Jadwal struct {
 	Kelas   Kelas     `gorm:"foreignKey:KelasID"`
 	DosenID int       `gorm:"not null"`
 	Dosen   Dosen     `gorm:"foreignKey:DosenID"`
-	Presensi []Presensi `gorm:"foreignKey:JadwalID"`
 }
 
 // Account model
@@ -107,10 +105,16 @@ type Presensi struct {
 
 	ID        int      `gorm:"primaryKey"`
 	MahasiswaID int    `gorm:"not null"`
-	DosenID   int      `gorm:"not null"`
-	JadwalID  int      `gorm:"not null"`
+	KelasID   int      `gorm:"not null"`
 	Date      time.Time `gorm:"not null"`
 	Mahasiswa Mahasiswa `gorm:"foreignKey:MahasiswaID"`
-	Dosen     Dosen     `gorm:"foreignKey:DosenID"`
-	Jadwal    Jadwal    `gorm:"foreignKey:JadwalID"`
+	Kelas     Kelas     `gorm:"foreignKey:KelasID"`
+}
+
+type MhsCard struct {
+	ID int `gorm:"primaryKey"`
+	CardUid string `gorm:"not null"`
+	MahasiswaID int    `gorm:"not null"`
+	Mahasiswa Mahasiswa `gorm:"foreignKey:MahasiswaID"`
+
 }

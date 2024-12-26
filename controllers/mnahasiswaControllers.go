@@ -73,7 +73,7 @@ func GetMahasiswa(c *gin.Context)  {
 	var mahasiwa models.MhsModel
 	
 	if result := initializers.DB.Table("mahasiswas").
-	Select("mahasiswas.id as mahasiswa_id, mahasiswas.name as mahasiswa_name, prodis.name AS prodi_name, prodis.id AS prodi_id,  fakultas.name AS fakultas_name,kelas.id AS kelas_id,kelas.name AS kelas_name,kelas.id AS kelas_id").
+	Select("mahasiswas.id as mahasiswa_id,mahasiswa.nim as nim mahasiswas.name as mahasiswa_name, prodis.name AS prodi_name, prodis.id AS prodi_id,  fakultas.name AS fakultas_name,kelas.id AS kelas_id,kelas.name AS kelas_name,kelas.id AS kelas_id").
     Joins("JOIN kelas ON mahasiswas.prodi_id = prodis.id").
     Joins("JOIN prodis ON kelas.prodi_id = prodis.id").
     Joins("JOIN fakultas ON prodis.fakultas_id = fakultas.id").

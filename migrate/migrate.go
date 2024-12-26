@@ -23,6 +23,8 @@ func main() {
 		&models.Staf{},
 		&models.Jadwal{},
 		&models.Account{},
+		&models.MhsCard{},
+		&models.Presensi{},
 	);err != nil {
 		log.Fatalf("Error during AutoMigrate: %v", err)
 		fmt.Printf("Error during AutoMigrate: %v", err)
