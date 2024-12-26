@@ -60,11 +60,11 @@ type Jadwal struct {
 	gorm.Model
 
 	ID      int       `gorm:"primaryKey"`
-	Hour    time.Time `gorm:"not null"`
+	Hour    string `gorm:"not null" json:"hour"`
+	Matkul  string 	  `gorm:"not null"`
 	Days    string    `gorm:"type:varchar(50);not null"`
-	Date	time.Time 
-	ProdiID int       `gorm:"not null"`
-	Prodi   Prodi     `gorm:"foreignKey:ProdiID"`
+	KelasID int       `gorm:"not null"`
+	Kelas   Kelas     `gorm:"foreignKey:KelasID"`
 	DosenID int       `gorm:"not null"`
 	Dosen   Dosen     `gorm:"foreignKey:DosenID"`
 	Presensi []Presensi `gorm:"foreignKey:JadwalID"`

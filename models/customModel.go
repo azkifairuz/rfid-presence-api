@@ -19,3 +19,11 @@ type MhsModel struct {
     FakultasName string `json:"fakultas_name"`
 }
 
+type JadwalModel struct {
+    JadwalId uint  `json:"jadwalId"`
+    Matkul string  `json:"matkul"`
+    Kelas string    `json:"kelas"`
+    Dosen string    `json:"dosen"`
+    Prodi string    `json:"prodi"`
+    Fakultas string    `json:"fakultas"`
+}
