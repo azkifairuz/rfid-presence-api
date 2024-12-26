@@ -21,6 +21,8 @@ func main() {
 	routes.KelasRoutes(r)
 	routes.JadwalRoutes(r)
 	routes.CardRoutes(r)
+	routes.PresenceClass(r)
+	routes.AuthRoutes(r)
 
 	r.Run()
 }

@@ -14,7 +14,7 @@ type MhsModel struct {
     MahasiswaID      uint   `json:"mahasiswa_id"`
     MahasiswaName    string `json:"mahasiswa_name"`
     MahasiswaNim    string `json:"nim"`
-    MahasiswaClass    string `json:"kelas_name"`
+    MahasiswaClass    string `json:"kelas"`
     ProdiID      uint   `json:"prodi_id"`
     ProdiName    string `json:"prodi_name"`
     FakultasID      uint   `json:"fakultas_id"`
@@ -24,7 +24,7 @@ type MhsModel struct {
 type JadwalModel struct {
     JadwalId uint  `json:"jadwalId"`
     Matkul string  `json:"matkul"`
-    Kelas string    `json:"kelas"`
+    Class string    `json:"kelas"`
     Dosen string    `json:"dosen"`
     Prodi string    `json:"prodi"`
     Fakultas string    `json:"fakultas"`
@@ -37,6 +37,19 @@ type CardResponse struct {
     MahasiswaNim    string `json:"nim"`
     MahasiswaId    int `json:"mahasiswa_id"`
     KelasId    int `json:"kelas_id"`
+}
 
-    
+type MahasiswaResponse struct {
+    MahasiswaName    string `json:"mahasiswa_name"`
+    MahasiswaClass    string `json:"kelas"`
+    MahasiswaNim    string `json:"nim"`
+    MahasiswaId    int `json:"mahasiswa_id"`
+}
+
+type PresenceResponse struct {
+    PresenceId     int `json:"presence_id"`
+    MahasiswaName    string `json:"mahasiswa_name"`
+    MahasiswaClass    string `json:"kelas"`
+    MahasiswaNim    string `json:"nim"`
+    MahasiswaId    int `json:"mahasiswa_id"`
 }

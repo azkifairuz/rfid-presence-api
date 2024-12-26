@@ -29,7 +29,6 @@ type Dosen struct {
 	Name     string `gorm:"type:varchar(100);not null"`
 	ProdiID   int    `gorm:"not null"`
 	Prodi     Prodi  `gorm:"foreignKey:ProdiID"`
-	Accounts []Account `gorm:"foreignKey:UserID"`
 }
 
 // Mahasiswa model
@@ -74,7 +73,8 @@ type Account struct {
 
 	ID       int        `gorm:"primaryKey"`
 	UserID   int        `gorm:"not null"`
-	Email    string
+	Email    string `gorm:"not null"`
+	Password    string  `gorm:"not null"`
 	AccountType AccountType `gorm:"type:varchar(50);not null"`
 }
 
@@ -96,7 +96,6 @@ type Staf struct {
 	Name      string    `gorm:"type:varchar(100);not null"`
 	FakultasID int      `gorm:"not null"`
 	Fakultas  Fakultas `gorm:"foreignKey:FakultasID"`
-	Accounts []Account `gorm:"foreignKey:UserID"`
 }
 
 // Presensi model

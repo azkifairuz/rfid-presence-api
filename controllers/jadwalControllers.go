@@ -76,9 +76,9 @@ func GetAllJadwal(c *gin.Context)  {
 	
 	var jadwal []models.JadwalModel
 	initializers.DB.Table("jadwals").
-	Select("jadwals.id as jadwalId,jadwals.matkul,dosens.name as dosen kelas.id as kelas_id, kelas.name as kelas, prodis.name AS prodi, prodis.id AS prodi_id,  fakultas.name AS fakultas,fakultas.id AS fakultas_id").
+	Select("jadwals.id as jadwal_id,jadwals.matkul,dosens.name as dosen, kelas.id as kelas_id, kelas.name as class, prodis.name AS prodi, prodis.id AS prodi_id,  fakultas.name AS fakultas,fakultas.id AS fakultas_id").
     Joins("JOIN dosens ON jadwals.dosen_id = dosens.id").
-    Joins("JOIN prodis ON kelas.prodi_id = prodis.id").
+    Joins("JOIN kelas ON jadwals.kelas_id = kelas.id").
 	Joins("JOIN prodis ON kelas.prodi_id = prodis.id").
     Joins("JOIN fakultas ON prodis.fakultas_id = fakultas.id").
     Scan(&jadwal)
@@ -93,9 +93,9 @@ func GetJadwal(c *gin.Context)  {
 	
 	var jadwal []models.JadwalModel
 	initializers.DB.Table("jadwals").
-	Select("jadwals.id as jadwalId,jadwals.matkul,dosens.name as dosen kelas.id as kelas_id, kelas.name as kelas, prodis.name AS prodi, prodis.id AS prodi_id,  fakultas.name AS fakultas,fakultas.id AS fakultas_id").
+	Select("jadwals.id as jadwal_id,jadwals.matkul,dosens.name as dosen, kelas.id as kelas_id, kelas.name as class, prodis.name AS prodi, prodis.id AS prodi_id,  fakultas.name AS fakultas,fakultas.id AS fakultas_id").
     Joins("JOIN dosens ON jadwals.dosen_id = dosens.id").
-    Joins("JOIN prodis ON kelas.prodi_id = prodis.id").
+    Joins("JOIN kelas ON jadwals.kelas_id = kelas.id").
 	Joins("JOIN prodis ON kelas.prodi_id = prodis.id").
     Joins("JOIN fakultas ON prodis.fakultas_id = fakultas.id").
 	Where("jadwals.id =?",id).

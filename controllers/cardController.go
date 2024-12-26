@@ -82,6 +82,6 @@ func ReadCard(c *gin.Context) {
 		return
 	}
 
-	helper.ResponseDefault(c, 200, card, "success  read card and presence recorded ")
+	helper.ResponseDefault(c, 200, card, "success  read card and presence record ")
 
 }

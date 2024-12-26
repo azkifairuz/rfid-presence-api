@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"strings"
 
 	"github.com/azkifairuz/rfid-presence-api/helper"
 	"github.com/azkifairuz/rfid-presence-api/initializers"
@@ -41,6 +42,15 @@ func CreateStaf(c *gin.Context)  {
 
 	result := initializers.DB.Create(&staf)
 	if result.Error !=nil {
+		helper.ResponseDefault(c, 400, nil, "Error binding data")
+
+		return
+	}
+	firstName := strings.Fields(body.Name)
+	emailFormat := firstName[0] + "@uca.ac.id"
+	account := models.Account{Email:emailFormat,Password: "stafdefault",AccountType: "staf",UserID:staf.ID }
+	createAccount := initializers.DB.Create(&account)
+	if createAccount.Error !=nil {
 		helper.ResponseDefault(c, 400, nil, "Error binding data")
 
 		return
