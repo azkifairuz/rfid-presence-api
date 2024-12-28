@@ -6,5 +6,5 @@ import (
 )
 
 func PresenceClass(r *gin.Engine) {
-	r.GET("presence/:class", controllers.GetPresenceByClass)
+	r.GET("api/presence/:class", controllers.GetPresenceByClass)
 }

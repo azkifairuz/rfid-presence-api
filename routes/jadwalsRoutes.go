@@ -6,7 +6,7 @@ import (
 )
 
 func JadwalRoutes(r *gin.Engine) {
-	r.POST("/jadwal", controllers.CreateJadwal)
-	r.GET("/jadwal", controllers.GetAllJadwal)
-	r.GET("/jadwal/:id", controllers.GetJadwal)
+	r.POST("api/jadwal", controllers.CreateJadwal)
+	r.GET("api/jadwal", controllers.GetAllJadwal)
+	r.GET("api/jadwal/:id", controllers.GetJadwal)
 }

@@ -30,7 +30,7 @@ func Login(c *gin.Context)  {
 		return
 	}
 
-	helper.ResponseDefault(c, 400, isAccountExist, "login success")
+	helper.ResponseDefault(c, 200, isAccountExist, "login success")
 }
 
 func ChangePassword(c *gin.Context) {

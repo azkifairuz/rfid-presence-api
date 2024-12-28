@@ -6,7 +6,7 @@ import (
 )
 
 func DosenRoutes(r *gin.Engine) {
-	r.POST("/dosen", controllers.CreateDosen)
-	r.GET("/dosen", controllers.GetAllDosen)
-	r.GET("/dosen/:id", controllers.GetDosen)
+	r.POST("api/dosen", controllers.CreateDosen)
+	r.GET("api/dosen", controllers.GetAllDosen)
+	r.GET("api/dosen/:id", controllers.GetDosen)
 }

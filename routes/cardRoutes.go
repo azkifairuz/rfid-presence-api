@@ -6,6 +6,6 @@ import (
 )
 
 func CardRoutes(r *gin.Engine) {
-	r.POST("card/register", controllers.RegisterCard)
-	r.GET("card/read/:uid", controllers.ReadCard)
+	r.POST("api/card/register", controllers.RegisterCard)
+	r.GET("api/card/read/:uid", controllers.ReadCard)
 }

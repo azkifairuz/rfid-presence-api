@@ -6,7 +6,7 @@ import (
 )
 
 func MahasiswaRoutes(r *gin.Engine) {
-	r.POST("/mahasiswa", controllers.CreateMahasiswa)
-	r.GET("/mahasiswa", controllers.GetAllMahasiswa)
-	r.GET("/mahasiswa/:id", controllers.GetMahasiswa)
+	r.POST("api/mahasiswa", controllers.CreateMahasiswa)
+	r.GET("api/mahasiswa", controllers.GetAllMahasiswa)
+	r.GET("api/mahasiswa/:id", controllers.GetMahasiswa)
 }

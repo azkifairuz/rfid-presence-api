@@ -6,7 +6,7 @@ import (
 )
 
 func StafRoutes(r *gin.Engine) {
-	r.POST("/staf", controllers.CreateStaf)
-	r.GET("/staf", controllers.GetAllStaf)
-	r.GET("/staf/:id", controllers.GetStaf)
+	r.POST("api/staf", controllers.CreateStaf)
+	r.GET("api/staf", controllers.GetAllStaf)
+	r.GET("api/staf/:id", controllers.GetStaf)
 }

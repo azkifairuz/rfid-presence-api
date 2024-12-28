@@ -6,7 +6,7 @@ import (
 )
 
 func KelasRoutes(r *gin.Engine) {
-	r.POST("/kelas", controllers.CreateKelas)
-	r.GET("/kelas", controllers.GetAllKelas)
-	r.GET("/kelas/:id", controllers.GetKelas)
+	r.POST("api/kelas", controllers.CreateKelas)
+	r.GET("api/kelas", controllers.GetAllKelas)
+	r.GET("api/kelas/:id", controllers.GetKelas)
 }

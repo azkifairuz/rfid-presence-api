@@ -7,7 +7,7 @@ import (
 )
 
 func FakultasRoutes(r *gin.Engine) {
-	r.POST("/fakultas", controllers.CreateFakultas)
-	r.GET("/fakultas", controllers.GetAllFakultas)
-	r.GET("/fakultas/:id", controllers.GetFakultas)
+	r.POST("api/fakultas", controllers.CreateFakultas)
+	r.GET("api/fakultas", controllers.GetAllFakultas)
+	r.GET("api/fakultas/:id", controllers.GetFakultas)
 }

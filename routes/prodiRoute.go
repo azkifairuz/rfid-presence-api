@@ -7,7 +7,7 @@ import (
 )
 
 func ProdiRoutes(r *gin.Engine) {
-	r.POST("/prodi", controllers.CreateProdi)
-	r.GET("/prodi", controllers.GetAllProdi)
-	r.GET("/prodi/:id", controllers.GetProdi)
+	r.POST("api/prodi", controllers.CreateProdi)
+	r.GET("api/prodi", controllers.GetAllProdi)
+	r.GET("api/prodi/:id", controllers.GetProdi)
 }
