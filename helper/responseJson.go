@@ -1,6 +1,9 @@
 package helper
 
 import (
+	"encoding/json"
+	"errors"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -11,4 +14,14 @@ func ResponseDefault(c *gin.Context, statusCode int, data interface{}, message s
 		"message": message,
 		"statusCode": statusCode,
 	})
+}
+
+func ParseJSON(data []byte, target interface{}) error {
+	if len(data) == 0 {
+		return errors.New("payload is empty")
+	}
+	if err := json.Unmarshal(data, target); err != nil {
+		return err
+	}
+	return nil
 }
